@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { User } from '../App';
 import { Home, Plus, Edit2, Trash2, DollarSign, Image, FileText, AlertTriangle, Filter, Eye, Mail } from 'lucide-react';
+import nycApartment from '../assets/nyc-apartment.jpg'
+import house from '../assets/house.jpg'
+import condo from '../assets/condo.jpg'
+import apartment2 from '../assets/apartment2.jpg'
 
 interface Property {
   id: string;
@@ -9,6 +13,7 @@ interface Property {
   status: 'Active' | 'Inactive' | 'Sold';
   value: number;
   photos: number;
+  imageUrl: string;
 }
 
 interface PropertyManagementProps {
@@ -17,10 +22,10 @@ interface PropertyManagementProps {
 
 export function PropertyManagement({ user }: PropertyManagementProps) {
   const [properties, setProperties] = useState<Property[]>([
-    { id: '1', address: '123 Main St, New York', type: 'Apartment', status: 'Active', value: 450000, photos: 5 },
-    { id: '2', address: '456 Oak Ave, Boston', type: 'House', status: 'Active', value: 750000, photos: 8 },
-    { id: '3', address: '789 Pine Rd, Chicago', type: 'Condo', status: 'Sold', value: 320000, photos: 4 },
-    { id: '4', address: '321 Elm St, Seattle', type: 'Apartment', status: 'Inactive', value: 520000, photos: 6 },
+    { id: '1', address: '123 Main St, New York', imageUrl: nycApartment, type: 'Apartment', status: 'Active', value: 450000, photos: 5 },
+    { id: '2', address: '456 Oak Ave, Boston', imageUrl: house, type: 'House', status: 'Active', value: 750000, photos: 8 },
+    { id: '3', address: '789 Pine Rd, Chicago', imageUrl: condo, type: 'Condo', status: 'Sold', value: 320000, photos: 4 },
+    { id: '4', address: '321 Elm St, Seattle', imageUrl: apartment2, type: 'Apartment', status: 'Inactive', value: 520000, photos: 6 },
   ]);
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -37,7 +42,8 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
     type: 'Apartment',
     status: 'Active' as const,
     value: 0,
-    photos: 0
+    photos: 0,
+    imageUrl: ''
   });
 
   const [requestMessage, setRequestMessage] = useState('');
@@ -54,7 +60,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
     };
     setProperties([...properties, property]);
     setShowAddModal(false);
-    setNewProperty({ address: '', type: 'Apartment', status: 'Active', value: 0, photos: 0 });
+    setNewProperty({ address: '', imageUrl: '', type: 'Apartment', status: 'Active', value: 0, photos: 0 });
   };
 
   const handleDeleteProperty = (id: string) => {
@@ -85,8 +91,8 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
     alert('Request sent to Manager successfully!');
   };
 
-  const filteredProperties = filterStatus === 'all' 
-    ? properties 
+  const filteredProperties = filterStatus === 'all'
+    ? properties
     : properties.filter(p => p.status.toLowerCase() === filterStatus);
 
   return (
@@ -161,11 +167,11 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
       {/* Property Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProperties.map((property) => (
-          <div 
+          <div
             key={property.id}
             className={`bg-white rounded-lg shadow-lg overflow-hidden transition-all ${
-              isReadOnly 
-                ? 'opacity-90 cursor-pointer hover:shadow-md' 
+              isReadOnly
+                ? 'opacity-90 cursor-pointer hover:shadow-md'
                 : 'hover:shadow-xl cursor-pointer'
             }`}
             onClick={() => handleViewDetails(property)}
@@ -180,13 +186,24 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
               </div>
             )}
 
-            <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center relative">
-              <Home className="w-16 h-16 text-white opacity-50" />
+            {/* Images of Cards */}
+            <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' /* 16:9 */ }}>
+            <img
+              src={property.imageUrl}
+              alt={property.address}
+              style={{
+                position: 'absolute',
+                top: 0, left: 0, width: '100%', height: '100%',
+                objectFit: 'cover',
+                borderTopLeftRadius: '0.5rem',
+                borderTopRightRadius: '0.5rem'
+              }}
+              />
             </div>
-            
+
             <div className="p-6">
               <h3 className="font-semibold text-lg mb-2">{property.address}</h3>
-              
+
               <div className="flex items-center gap-2 mb-3">
                 <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
                   {property.type}
@@ -199,7 +216,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   {property.status}
                 </span>
               </div>
-              
+
               <div className="flex items-center justify-between text-gray-600 text-sm mb-4">
                 <div className="flex items-center gap-1">
                   <DollarSign className="w-4 h-4" />
@@ -285,7 +302,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
             <h2 className="text-xl font-bold text-gray-900 mb-4">
               {selectedProperty ? 'Edit Property' : 'Add New Property'}
             </h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Address</label>
@@ -297,7 +314,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   placeholder="Enter property address"
                 />
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Type</label>
@@ -312,7 +329,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     <option value="Commercial">Commercial</option>
                   </select>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Status</label>
                   <select
@@ -338,7 +355,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     placeholder="0"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Number of Photos</label>
                   <input
@@ -351,13 +368,13 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => {
                   setShowAddModal(false);
                   setSelectedProperty(null);
-                  setNewProperty({ address: '', type: 'Apartment', status: 'Active', value: 0, photos: 0 });
+                  setNewProperty({ address: '', type: 'Apartment', imageUrl: '', status: 'Active', value: 0, photos: 0 });
                 }}
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
               >
@@ -387,7 +404,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   </span>
                 )}
               </div>
-              
+
               {/* Tabs */}
               <div className="border-b border-gray-200 mb-6">
                 <nav className="flex gap-4">
@@ -442,7 +459,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                       <p className="font-medium text-lg">{selectedProperty.photos} available</p>
                     </div>
                   </div>
-                  
+
                   {isReadOnly && (
                     <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <p className="text-sm text-blue-800">
@@ -526,7 +543,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                 >
                   Close
                 </button>
-                
+
                 {isReadOnly && (
                   <button
                     onClick={() => {
@@ -552,7 +569,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
             <h2 className="text-xl font-bold text-gray-900 mb-4">
               {requestType === 'edit' ? 'Request Property Edit' : 'Request New Listing'}
             </h2>
-            
+
             <div className="mb-6">
               {requestType === 'edit' && selectedProperty && (
                 <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4">
@@ -586,7 +603,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                 </p>
               </div>
             </div>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={() => {

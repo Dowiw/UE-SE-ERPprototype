@@ -100,48 +100,44 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gold-400">Financial Management</h1>
-        <p className="text-gold-200 mt-2">
+        <h1 className="text-3xl font-bold text-gray-900">Financial Management</h1>
+        <p className="text-gray-500 mt-2">
           {isReadOnly ? 'Read-Only Mode - Limited Access' : 'Full Financial Access'}
         </p>
       </div>
 
       {/* KPI Dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gold-200">Total Revenue</p>
-            <TrendingUp className="w-5 h-5 text-gold-300" />
+            <p className="text-gray-600">Total Revenue</p>
           </div>
           <p className="text-3xl font-bold">${kpiData.totalRevenue.toLocaleString()}</p>
-          <p className="text-sm text-gold-200 mt-2">+12.5% from last month</p>
+          <p className="text-sm text-gray-500 mt-2">+12.5% from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gold-200">Total Expenses</p>
-            <DollarSign className="w-5 h-5 text-gold-300" />
+            <p className="text-gray-600">Total Expenses</p>
           </div>
           <p className="text-3xl font-bold">${kpiData.totalExpenses.toLocaleString()}</p>
-          <p className="text-sm text-gold-200 mt-2">+3.2% from last month</p>
+          <p className="text-sm text-gray-500 mt-2">+3.2% from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gold-200">Pending Invoices</p>
-            <FileText className="w-5 h-5 text-gold-300" />
+            <p className="text-gray-600">Pending Invoices</p>
           </div>
           <p className="text-3xl font-bold">{kpiData.pendingInvoices}</p>
-          <p className="text-sm text-gold-200 mt-2">Awaiting payment</p>
+          <p className="text-sm text-gray-500 mt-2">Awaiting payment</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-gold-200">Profit Margin</p>
-            <TrendingUp className="w-5 h-5 text-gold-300" />
+            <p className="text-gray-600">Profit Margin</p>
           </div>
           <p className="text-3xl font-bold">{kpiData.profitMargin.toFixed(1)}%</p>
-          <p className="text-sm text-gold-200 mt-2">Above target</p>
+          <p className="text-sm text-gray-500 mt-2">Above target</p>
         </div>
       </div>
 
@@ -152,11 +148,10 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
           disabled={isReadOnly}
           className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
             isReadOnly
-              ? 'bg-gray-700 text-gold-700 cursor-not-allowed'
-              : 'bg-gold-400 text-[#181818] hover:bg-gold-300'
+              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
           }`}
         >
-          <Plus className="w-4 h-4" />
           Record Payment
         </button>
 
@@ -165,19 +160,17 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
           disabled={isReadOnly}
           className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
             isReadOnly
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              : 'bg-green-600 text-white hover:bg-green-700'
+              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
           }`}
         >
-          <FileText className="w-4 h-4" />
           Generate Invoice
         </button>
 
         <button
           onClick={() => setShowReportModal(true)}
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+          className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
         >
-          <Download className="w-4 h-4" />
           View Financial Report
         </button>
       </div>

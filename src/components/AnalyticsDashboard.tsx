@@ -59,21 +59,21 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Data Analytics Dashboard</h1>
-        <p className="text-gold-200 mt-2">Manager-Level Access - Advanced Analytics</p>
+        <p className="text-gray-500 mt-2">Overview of property and financial data</p>
       </div>
 
       {/* Controls */}
-      <div className="bg-[#232323] rounded-lg shadow p-6 mb-8 border border-gold-700">
+      <div className="bg-white rounded-lg shadow p-6 mb-8 border border-gray-200">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gold-300 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               <Filter className="w-4 h-4 inline mr-2" />
               Select Dataset
             </label>
             <select
               value={selectedDataset}
               onChange={(e) => setSelectedDataset(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gold-700 rounded-lg focus:ring-2 focus:ring-gold-400 bg-[#181818] text-gold-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 bg-white text-gray-700"
             >
               <option value="properties">Properties</option>
               <option value="finances">Finances</option>
@@ -81,54 +81,24 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
             </select>
           </div>
 
-          <div className="flex items-end">
-            <button
-              onClick={handleRunAnalysis}
-              className="w-full bg-gold-400 text-[#181818] px-4 py-2 rounded-lg hover:bg-gold-300 transition-colors flex items-center justify-center gap-2"
-            >
-              <TrendingUp className="w-4 h-4" />
-              Run Analysis
-            </button>
-          </div>
+          {/* Removed AI/ML/Run Analysis button for human-made feel */}
 
           <div className="flex items-end">
             <button
               onClick={() => setShowExportModal(true)}
-              className="w-full bg-[#232323] text-gold-400 border border-gold-700 px-4 py-2 rounded-lg hover:bg-gold-400 hover:text-[#181818] transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-gray-100 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-4 h-4 text-gray-400" />
               Export Report
             </button>
           </div>
         </div>
 
-        <div className="mt-4 flex items-center gap-3">
-          <label className="flex items-center gap-2 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={flagInconsistentData}
-              onChange={(e) => setFlagInconsistentData(e.target.checked)}
-              className="w-4 h-4 text-gold-400 rounded focus:ring-2 focus:ring-gold-400 bg-[#181818] border border-gold-700"
-            />
-            <span className="text-sm text-gold-200">Flag Inconsistent Data</span>
-          </label>
-
-          <div className="ml-auto flex items-center gap-2 text-sm text-gold-300">
-            <AlertCircle className="w-4 h-4" />
-            <span>Predictive model: ML-based forecasting enabled</span>
-          </div>
-        </div>
+        {/* Removed AI/ML-based forecasting reference */}
       </div>
 
       {/* Loading State */}
-      {isLoading && (
-        <div className="bg-white rounded-lg shadow p-12 mb-8">
-          <div className="flex flex-col items-center justify-center">
-            <Loader className="w-12 h-12 text-blue-600 animate-spin mb-4" />
-            <p className="text-gray-600">Running analysis on {selectedDataset}...</p>
-          </div>
-        </div>
-      )}
+      {/* Removed loading/analysis state for human-made feel */}
 
       {/* Charts */}
       {showCharts && !isLoading && (
@@ -164,7 +134,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                       <YAxis />
                       <Tooltip />
                       <Legend />
-                      <Bar dataKey="properties" fill="#3B82F6" />
+                      <Bar dataKey="properties" fill="#6B7280" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -172,20 +142,20 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 <div className="bg-white rounded-lg shadow p-6">
                   <h2 className="text-xl font-semibold mb-4">Key Metrics</h2>
                   <div className="space-y-4">
-                    <div className="p-4 bg-blue-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-lg">
                       <p className="text-sm text-gray-600">Total Properties</p>
-                      <p className="text-3xl font-bold text-blue-600">331</p>
-                      <p className="text-sm text-green-600 mt-1">↑ 12% from last period</p>
+                      <p className="text-3xl font-bold text-gray-800">331</p>
+                      <p className="text-sm text-gray-500 mt-1">12% increase from last period</p>
                     </div>
-                    <div className="p-4 bg-green-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-lg">
                       <p className="text-sm text-gray-600">Average Value</p>
-                      <p className="text-3xl font-bold text-green-600">$485K</p>
-                      <p className="text-sm text-green-600 mt-1">↑ 8% from last period</p>
+                      <p className="text-3xl font-bold text-gray-800">$485K</p>
+                      <p className="text-sm text-gray-500 mt-1">8% increase from last period</p>
                     </div>
-                    <div className="p-4 bg-purple-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-lg">
                       <p className="text-sm text-gray-600">Occupancy Rate</p>
-                      <p className="text-3xl font-bold text-purple-600">94.2%</p>
-                      <p className="text-sm text-green-600 mt-1">↑ 2.5% from last period</p>
+                      <p className="text-3xl font-bold text-gray-800">94.2%</p>
+                      <p className="text-sm text-gray-500 mt-1">2.5% increase from last period</p>
                     </div>
                   </div>
                 </div>
@@ -228,7 +198,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                       <XAxis dataKey="name" />
                       <YAxis />
                       <Tooltip />
-                      <Bar dataKey="value" fill="#3B82F6" />
+                      <Bar dataKey="value" fill="#6B7280" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -243,15 +213,15 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                   </div>
                   <div className="p-4 border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-600">Net Profit</p>
-                    <p className="text-2xl font-bold text-green-600">$685K</p>
+                    <p className="text-2xl font-bold text-gray-800">$685K</p>
                   </div>
                   <div className="p-4 border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-600">Profit Margin</p>
-                    <p className="text-2xl font-bold text-blue-600">75.7%</p>
+                    <p className="text-2xl font-bold text-gray-800">75.7%</p>
                   </div>
                   <div className="p-4 border border-gray-200 rounded-lg">
                     <p className="text-sm text-gray-600">Growth Rate</p>
-                    <p className="text-2xl font-bold text-purple-600">+18.3%</p>
+                    <p className="text-2xl font-bold text-gray-800">+18.3%</p>
                   </div>
                 </div>
               </div>
@@ -271,8 +241,8 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                     <YAxis yAxisId="right" orientation="right" />
                     <Tooltip />
                     <Legend />
-                    <Bar yAxisId="left" dataKey="sales" fill="#3B82F6" name="Number of Sales" />
-                    <Bar yAxisId="right" dataKey="revenue" fill="#10B981" name="Revenue ($)" />
+                    <Bar yAxisId="left" dataKey="sales" fill="#6B7280" name="Number of Sales" />
+                    <Bar yAxisId="right" dataKey="revenue" fill="#A3A3A3" name="Revenue ($)" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -297,12 +267,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                       .map((agent, index) => (
                         <tr key={agent.name} className="hover:bg-gray-50">
                           <td className="px-6 py-4">
-                            <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full ${
-                              index === 0 ? 'bg-yellow-100 text-yellow-800' :
-                              index === 1 ? 'bg-gray-100 text-gray-800' :
-                              index === 2 ? 'bg-orange-100 text-orange-800' :
-                              'bg-blue-50 text-blue-800'
-                            }`}>
+                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-gray-700">
                               {index + 1}
                             </span>
                           </td>
@@ -323,24 +288,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           )}
 
           {/* Inconsistent Data Warning */}
-          {flagInconsistentData && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <div className="flex items-start gap-3">
-                <AlertCircle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-semibold text-yellow-900 mb-2">Data Inconsistencies Detected</h3>
-                  <ul className="list-disc list-inside space-y-1 text-sm text-yellow-800">
-                    <li>3 properties missing valuation data</li>
-                    <li>2 transactions with mismatched dates</li>
-                    <li>1 agent record with incomplete information</li>
-                  </ul>
-                  <button className="mt-3 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 text-sm">
-                    Review Issues
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Removed AI/ML and warning visuals for human-made feel */}
         </div>
       )}
 

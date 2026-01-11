@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import amGroupLogo from '../assets/logo-amgroup.png';
+import loginBg from '../assets/login-bgg.jpg';
 import { User } from '../App';
 import { AlertCircle, Lock, Mail, Shield } from 'lucide-react';
 
@@ -82,7 +83,14 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(to bottom right, #1a1a1a, #2a2a2a)' }}>
+    <div className="min-h-screen flex items-center justify-center p-4"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(${loginBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundBlendMode: 'darken',
+          }}
+        >
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-8">
           <img

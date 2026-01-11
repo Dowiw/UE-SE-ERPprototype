@@ -43,33 +43,33 @@ export function GDPRCompliance() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gold-400">GDPR Compliance Dashboard</h1>
-        <p className="text-gold-200 mt-2">Data Protection & Privacy Management</p>
+        <h1 className="text-3xl font-bold text-gray-900">GDPR Compliance Dashboard</h1>
+        <p className="text-gray-500 mt-2">Data Protection & Privacy Management</p>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
-          <Shield className="w-8 h-8 mb-2 text-gold-300" />
-          <p className="text-gold-200 text-sm">Compliance Score</p>
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
+          <Shield className="w-8 h-8 mb-2 text-gray-400" />
+          <p className="text-gray-600 text-sm">Compliance Score</p>
           <p className="text-3xl font-bold">100%</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
-          <Database className="w-8 h-8 mb-2 text-gold-300" />
-          <p className="text-gold-200 text-sm">Data Subjects</p>
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
+          <Database className="w-8 h-8 mb-2 text-gray-400" />
+          <p className="text-gray-600 text-sm">Data Subjects</p>
           <p className="text-3xl font-bold">1,248</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
-          <Eye className="w-8 h-8 mb-2 text-gold-300" />
-          <p className="text-gold-200 text-sm">Access Requests</p>
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
+          <Eye className="w-8 h-8 mb-2 text-gray-400" />
+          <p className="text-gray-600 text-sm">Access Requests</p>
           <p className="text-3xl font-bold">23</p>
         </div>
 
-        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
-          <Calendar className="w-8 h-8 mb-2 text-gold-300" />
-          <p className="text-gold-200 text-sm">Last Backup</p>
+        <div className="bg-white rounded-lg p-6 text-gray-800 border border-gray-200">
+          <Calendar className="w-8 h-8 mb-2 text-gray-400" />
+          <p className="text-gray-600 text-sm">Last Backup</p>
           <p className="text-xl font-bold">2 hours ago</p>
         </div>
       </div>
