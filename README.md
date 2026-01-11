@@ -57,7 +57,7 @@ src/
 
 ## Guidelines
 
-- Follow the [guidelines/Guidelines.md](src/guidelines/Guidelines.md) for UI and code conventions.
+- Follow the [guidelines/Guidelines.md](/src/guidelines/Guidelines.md) for UI and code conventions.
 - Use the gold/black color scheme for all new UI components.
 - Keep components modular and reusable.
 
