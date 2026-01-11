@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import amGroupLogo from '../assets/logo-amgroup.png';
 import { User } from '../App';
 import { AlertCircle, Lock, Mail, Shield } from 'lucide-react';
 
@@ -18,22 +19,22 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
   const validateForm = () => {
     const newErrors: { username?: string; password?: string } = {};
-    
+
     if (!username.trim()) {
       newErrors.username = 'Username is required';
     }
-    
+
     if (!password.trim()) {
       newErrors.password = 'Password is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -53,13 +54,13 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     };
 
     const user = mockUsers[username.toLowerCase() as keyof typeof mockUsers];
-    
+
     if (user && password === 'password123') {
       onLogin(user);
     } else {
       const newAttempts = failedAttempts + 1;
       setFailedAttempts(newAttempts);
-      
+
       if (newAttempts >= 3) {
         setShowTooManyAttempts(true);
       } else {
@@ -84,9 +85,11 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     <div className="min-h-screen flex items-center justify-center p-4" style={{ background: 'linear-gradient(to bottom right, #1a1a1a, #2a2a2a)' }}>
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style={{ backgroundColor: '#D4AF37' }}>
-            <Shield className="w-8 h-8" style={{ color: '#1a1a1a' }} />
-          </div>
+          <img
+            src={amGroupLogo}
+            alt="AM Group Logo"
+            style={{ width: '120px', margin: '0 auto 16px auto', display: 'block' }}
+          />
           <h1 className="text-3xl font-bold text-gray-900">AM Group ERP</h1>
           <p className="text-gray-600 mt-2">Enterprise Resource Planning System</p>
         </div>
@@ -192,7 +195,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
               <Mail className="w-5 h-5" />
               Reset Password
             </h2>
-            
+
             {emailSent ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#F4E8C6' }}>
@@ -219,7 +222,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                     aria-label="Email address for password reset"
                   />
                 </div>
-                
+
                 <div className="flex gap-3">
                   <button
                     type="button"
@@ -257,12 +260,12 @@ export function LoginPage({ onLogin }: LoginPageProps) {
               </div>
               <h2 className="text-xl font-bold text-gray-900">Too Many Failed Attempts</h2>
             </div>
-            
+
             <p className="text-gray-600 mb-6">
-              Your account has been temporarily locked due to multiple failed login attempts. 
+              Your account has been temporarily locked due to multiple failed login attempts.
               Please try again in 15 minutes or contact your system administrator.
             </p>
-            
+
             <button
               onClick={() => {
                 setShowTooManyAttempts(false);

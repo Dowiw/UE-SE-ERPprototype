@@ -77,7 +77,3 @@ For questions or issues, please open an issue or contact the maintainers.
 - **Accessibility:** Follows WCAG 2.1 AA guidelines.
 - **Audit Logging:** All critical actions (user/account changes, financial transactions) are logged and viewable.
 - **Responsive Design:** Works on desktop and mobile devices.
-
----
-
-Original design: [Figma Project](https://www.figma.com/design/ii2P87h8TIc8GTJhfGvsJc/Interactive-ERP-Application--Community-)
