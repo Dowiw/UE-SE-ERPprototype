@@ -65,6 +65,19 @@ src/
 
 For questions or issues, please open an issue or contact the maintainers.
 
+## Features
+
+- **Role-Based Access Control (RBAC):** Restricts access to modules and actions based on user roles (Admin, Manager, Agent, Accountant).
+- **System Administration:** User management, system configuration, and audit logs. (See: `AdminDashboard.tsx`, `SystemConfiguration.tsx`)
+- **Property Management:** CRUD operations for properties, with role-based data visibility. (See: `PropertyManagement.tsx`)
+- **Financial Management:** Record payments, generate invoices, view financial reports, and approval workflows. (See: `FinancialManagement.tsx`)
+- **Analytics Dashboard:** Visualize KPIs and trends; (optionally) predictive analytics. (See: `AnalyticsDashboard.tsx`)
+- **GDPR Compliance:** Data privacy tools and audit trails. (See: `GDPRCompliance.tsx`)
+- **Session Management:** Automatic logout on inactivity. (See: `SessionTimeoutModal.tsx`)
+- **Accessibility:** Follows WCAG 2.1 AA guidelines.
+- **Audit Logging:** All critical actions (user/account changes, financial transactions) are logged and viewable.
+- **Responsive Design:** Works on desktop and mobile devices.
+
 ---
 
 Original design: [Figma Project](https://www.figma.com/design/ii2P87h8TIc8GTJhfGvsJc/Interactive-ERP-Application--Community-)
