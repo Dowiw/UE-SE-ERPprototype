@@ -62,7 +62,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
     };
 
     setTransactions([transaction, ...transactions]);
-    
+
     // Update KPIs
     setKpiData({
       ...kpiData,
@@ -100,48 +100,48 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Financial Management</h1>
-        <p className="text-gray-600 mt-2">
+        <h1 className="text-3xl font-bold text-gold-400">Financial Management</h1>
+        <p className="text-gold-200 mt-2">
           {isReadOnly ? 'Read-Only Mode - Limited Access' : 'Full Financial Access'}
         </p>
       </div>
 
       {/* KPI Dashboard */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-blue-100">Total Revenue</p>
-            <TrendingUp className="w-5 h-5" />
+            <p className="text-gold-200">Total Revenue</p>
+            <TrendingUp className="w-5 h-5 text-gold-300" />
           </div>
           <p className="text-3xl font-bold">${kpiData.totalRevenue.toLocaleString()}</p>
-          <p className="text-sm text-blue-100 mt-2">+12.5% from last month</p>
+          <p className="text-sm text-gold-200 mt-2">+12.5% from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-red-100">Total Expenses</p>
-            <DollarSign className="w-5 h-5" />
+            <p className="text-gold-200">Total Expenses</p>
+            <DollarSign className="w-5 h-5 text-gold-300" />
           </div>
           <p className="text-3xl font-bold">${kpiData.totalExpenses.toLocaleString()}</p>
-          <p className="text-sm text-red-100 mt-2">+3.2% from last month</p>
+          <p className="text-sm text-gold-200 mt-2">+3.2% from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-yellow-100">Pending Invoices</p>
-            <FileText className="w-5 h-5" />
+            <p className="text-gold-200">Pending Invoices</p>
+            <FileText className="w-5 h-5 text-gold-300" />
           </div>
           <p className="text-3xl font-bold">{kpiData.pendingInvoices}</p>
-          <p className="text-sm text-yellow-100 mt-2">Awaiting payment</p>
+          <p className="text-sm text-gold-200 mt-2">Awaiting payment</p>
         </div>
 
-        <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-green-100">Profit Margin</p>
-            <TrendingUp className="w-5 h-5" />
+            <p className="text-gold-200">Profit Margin</p>
+            <TrendingUp className="w-5 h-5 text-gold-300" />
           </div>
           <p className="text-3xl font-bold">{kpiData.profitMargin.toFixed(1)}%</p>
-          <p className="text-sm text-green-100 mt-2">Above target</p>
+          <p className="text-sm text-gold-200 mt-2">Above target</p>
         </div>
       </div>
 
@@ -151,9 +151,9 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
           onClick={() => canEdit ? setShowPaymentModal(true) : null}
           disabled={isReadOnly}
           className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
-            isReadOnly 
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-              : 'bg-blue-600 text-white hover:bg-blue-700'
+            isReadOnly
+              ? 'bg-gray-700 text-gold-700 cursor-not-allowed'
+              : 'bg-gold-400 text-[#181818] hover:bg-gold-300'
           }`}
         >
           <Plus className="w-4 h-4" />
@@ -164,8 +164,8 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
           onClick={() => canEdit ? setShowInvoiceModal(true) : null}
           disabled={isReadOnly}
           className={`px-4 py-2 rounded-lg transition-colors flex items-center gap-2 ${
-            isReadOnly 
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+            isReadOnly
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
               : 'bg-green-600 text-white hover:bg-green-700'
           }`}
         >
@@ -196,11 +196,11 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
         <div className="px-6 py-4 border-b border-gray-200">
           <h2 className="text-xl font-semibold">Transaction History</h2>
         </div>
-        
+
         <table className="w-full">
           <thead className="bg-gray-50">
             <tr>
-              <th 
+              <th
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                 onClick={() => handleSort('date')}
               >
@@ -211,7 +211,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Property</th>
-              <th 
+              <th
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase cursor-pointer hover:bg-gray-100"
                 onClick={() => handleSort('amount')}
               >
@@ -260,7 +260,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Record Payment</h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -275,7 +275,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Date <span className="text-red-500">*</span>
@@ -288,7 +288,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Linked Property</label>
                 <select
@@ -303,7 +303,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
                 </select>
               </div>
             </div>
-            
+
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowPaymentModal(false)}
@@ -327,7 +327,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Invoice Preview</h2>
-            
+
             <div className="border border-gray-200 rounded-lg p-6 mb-6">
               <div className="flex justify-between items-start mb-6">
                 <div>
@@ -385,7 +385,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={() => setShowInvoiceModal(false)}
@@ -410,7 +410,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl p-6 max-h-[90vh] overflow-y-auto">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Financial Report - January 2026</h2>
-            
+
             <div className="grid grid-cols-2 gap-6 mb-6">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-gray-600">Total Revenue</p>
@@ -453,7 +453,7 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={() => setShowReportModal(false)}
@@ -488,11 +488,11 @@ export function FinancialManagement({ user }: FinancialManagementProps) {
               </div>
               <h2 className="text-xl font-bold text-gray-900">Data Inconsistency</h2>
             </div>
-            
+
             <p className="text-gray-600 mb-6">
               Required fields are missing or invalid. Please ensure all required fields are filled correctly before submitting.
             </p>
-            
+
             <button
               onClick={() => setShowDataInconsistency(false)}
               className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

@@ -84,13 +84,13 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
   return (
     <div>
       {/* RBAC Notice */}
-      <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600 rounded-lg">
+      <div className="mb-6 p-4 bg-[#232323] border-l-4 border-gold-500 rounded-lg">
         <div className="flex items-start gap-3">
-          <Shield className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+          <Shield className="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-medium text-blue-900">Administrator Access - System Administration Only</p>
-            <p className="text-sm text-blue-800 mt-1">
-              Your access is limited to User Management, System Logs, Audit Trail, and Configuration. 
+            <p className="font-medium text-gold-300">Administrator Access - System Administration Only</p>
+            <p className="text-sm text-gold-200 mt-1">
+              Your access is limited to User Management, System Logs, Audit Trail, and Configuration.
               Property, Financial, and Analytics modules are restricted per SRS UC0001/UC0002.
             </p>
           </div>
@@ -98,19 +98,19 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">System Administration Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back, {user.username}</p>
+        <h1 className="text-3xl font-bold text-gold-400">System Administration Dashboard</h1>
+        <p className="text-gold-200 mt-2">Welcome back, {user.username}</p>
       </div>
 
       {/* Tab Navigation */}
-      <div className="border-b border-gray-200 mb-6">
+      <div className="border-b border-gold-700 mb-6">
         <nav className="flex gap-4" aria-label="Admin sections">
           <button
             onClick={() => setActiveTab('overview')}
             className={`px-4 py-2 border-b-2 transition-colors ${
               activeTab === 'overview'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-600 hover:text-gray-900'
+                ? 'border-gold-400 text-gold-400'
+                : 'border-transparent text-gold-200 hover:text-gold-300'
             }`}
           >
             <Settings className="w-4 h-4 inline mr-2" />
@@ -120,8 +120,8 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
             onClick={() => setActiveTab('users')}
             className={`px-4 py-2 border-b-2 transition-colors ${
               activeTab === 'users'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-600 hover:text-gray-900'
+                ? 'border-gold-400 text-gold-400'
+                : 'border-transparent text-gold-200 hover:text-gold-300'
             }`}
           >
             <Users className="w-4 h-4 inline mr-2" />
@@ -131,8 +131,8 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
             onClick={() => setActiveTab('logs')}
             className={`px-4 py-2 border-b-2 transition-colors ${
               activeTab === 'logs'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-600 hover:text-gray-900'
+                ? 'border-gold-400 text-gold-400'
+                : 'border-transparent text-gold-200 hover:text-gold-300'
             }`}
           >
             <FileText className="w-4 h-4 inline mr-2" />
@@ -142,8 +142,8 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
             onClick={() => setActiveTab('audit')}
             className={`px-4 py-2 border-b-2 transition-colors ${
               activeTab === 'audit'
-                ? 'border-blue-600 text-blue-600'
-                : 'border-transparent text-gray-600 hover:text-gray-900'
+                ? 'border-gold-400 text-gold-400'
+                : 'border-transparent text-gold-200 hover:text-gold-300'
             }`}
           >
             <ClipboardList className="w-4 h-4 inline mr-2" />
@@ -157,27 +157,27 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
         <div className="space-y-6">
           {/* System Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white">
-              <Users className="w-8 h-8 mb-2" />
-              <p className="text-blue-100">Total Users</p>
+            <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+              <Users className="w-8 h-8 mb-2 text-gold-300" />
+              <p className="text-gold-200">Total Users</p>
               <p className="text-3xl font-bold">{users.length}</p>
             </div>
 
-            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white">
-              <Users className="w-8 h-8 mb-2" />
-              <p className="text-green-100">Active Users</p>
+            <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+              <Users className="w-8 h-8 mb-2 text-gold-300" />
+              <p className="text-gold-200">Active Users</p>
               <p className="text-3xl font-bold">{activeUsers}</p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-6 text-white">
-              <ClipboardList className="w-8 h-8 mb-2" />
-              <p className="text-purple-100">Today's Logins</p>
+            <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+              <ClipboardList className="w-8 h-8 mb-2 text-gold-300" />
+              <p className="text-gold-200">Today's Logins</p>
               <p className="text-3xl font-bold">{todayLogins}</p>
             </div>
 
-            <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-lg p-6 text-white">
-              <AlertCircle className="w-8 h-8 mb-2" />
-              <p className="text-red-100">Failed Attempts</p>
+            <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+              <AlertCircle className="w-8 h-8 mb-2 text-gold-300" />
+              <p className="text-gold-200">Failed Attempts</p>
               <p className="text-3xl font-bold">{failedLogins}</p>
             </div>
           </div>
@@ -294,8 +294,8 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2 py-1 rounded text-sm ${
-                        user.status === 'Active' 
-                          ? 'bg-green-100 text-green-800' 
+                        user.status === 'Active'
+                          ? 'bg-green-100 text-green-800'
                           : 'bg-gray-100 text-gray-800'
                       }`}>
                         {user.status}
@@ -430,7 +430,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Add New User</h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -442,7 +442,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                   placeholder="Enter name"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                 <input
@@ -453,7 +453,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                   placeholder="Enter email"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Assign Role</label>
                 <select
@@ -468,7 +468,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                 </select>
               </div>
             </div>
-            
+
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowAddUserModal(false)}
@@ -492,7 +492,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Edit User</h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
@@ -503,7 +503,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Role</label>
                 <select
@@ -530,7 +530,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                 </select>
               </div>
             </div>
-            
+
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowEditUserModal(false)}
@@ -557,7 +557,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl p-6 max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Detailed System Logs</h2>
-            
+
             <div className="space-y-2">
               {auditLogs.map((log) => (
                 <div key={log.id} className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
@@ -575,7 +575,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                 </div>
               ))}
             </div>
-            
+
             <button
               onClick={() => setShowLogsModal(false)}
               className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"

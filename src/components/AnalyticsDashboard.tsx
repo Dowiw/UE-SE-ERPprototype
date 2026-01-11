@@ -44,7 +44,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
   const handleRunAnalysis = () => {
     setIsLoading(true);
     setShowCharts(false);
-    
+
     setTimeout(() => {
       setIsLoading(false);
       setShowCharts(true);
@@ -59,21 +59,21 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
     <div>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Data Analytics Dashboard</h1>
-        <p className="text-gray-600 mt-2">Manager-Level Access - Advanced Analytics</p>
+        <p className="text-gold-200 mt-2">Manager-Level Access - Advanced Analytics</p>
       </div>
 
       {/* Controls */}
-      <div className="bg-white rounded-lg shadow p-6 mb-8">
+      <div className="bg-[#232323] rounded-lg shadow p-6 mb-8 border border-gold-700">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gold-300 mb-2">
               <Filter className="w-4 h-4 inline mr-2" />
               Select Dataset
             </label>
             <select
               value={selectedDataset}
               onChange={(e) => setSelectedDataset(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gold-700 rounded-lg focus:ring-2 focus:ring-gold-400 bg-[#181818] text-gold-400"
             >
               <option value="properties">Properties</option>
               <option value="finances">Finances</option>
@@ -84,7 +84,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           <div className="flex items-end">
             <button
               onClick={handleRunAnalysis}
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-gold-400 text-[#181818] px-4 py-2 rounded-lg hover:bg-gold-300 transition-colors flex items-center justify-center gap-2"
             >
               <TrendingUp className="w-4 h-4" />
               Run Analysis
@@ -94,7 +94,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           <div className="flex items-end">
             <button
               onClick={() => setShowExportModal(true)}
-              className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-[#232323] text-gold-400 border border-gold-700 px-4 py-2 rounded-lg hover:bg-gold-400 hover:text-[#181818] transition-colors flex items-center justify-center gap-2"
             >
               <Download className="w-4 h-4" />
               Export Report
@@ -108,12 +108,12 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
               type="checkbox"
               checked={flagInconsistentData}
               onChange={(e) => setFlagInconsistentData(e.target.checked)}
-              className="w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+              className="w-4 h-4 text-gold-400 rounded focus:ring-2 focus:ring-gold-400 bg-[#181818] border border-gold-700"
             />
-            <span className="text-sm text-gray-700">Flag Inconsistent Data</span>
+            <span className="text-sm text-gold-200">Flag Inconsistent Data</span>
           </label>
-          
-          <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+
+          <div className="ml-auto flex items-center gap-2 text-sm text-gold-300">
             <AlertCircle className="w-4 h-4" />
             <span>Predictive model: ML-based forecasting enabled</span>
           </div>
@@ -349,7 +349,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Detailed Breakdown</h2>
-            
+
             <div className="space-y-4">
               <div className="p-4 bg-blue-50 rounded-lg">
                 <p className="text-sm text-gray-600">Selected Data Point</p>
@@ -372,7 +372,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 In a production environment, this would show comprehensive analytics and insights.
               </p>
             </div>
-            
+
             <button
               onClick={() => setDrillDownData(null)}
               className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -388,7 +388,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Export Report</h2>
-            
+
             <div className="space-y-3">
               <button className="w-full p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-left">
                 <div className="flex items-center gap-3">
@@ -420,7 +420,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 </div>
               </button>
             </div>
-            
+
             <button
               onClick={() => setShowExportModal(false)}
               className="mt-6 w-full px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"

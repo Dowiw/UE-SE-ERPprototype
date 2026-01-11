@@ -43,33 +43,33 @@ export function GDPRCompliance() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">GDPR Compliance Dashboard</h1>
-        <p className="text-gray-600 mt-2">Data Protection & Privacy Management</p>
+        <h1 className="text-3xl font-bold text-gold-400">GDPR Compliance Dashboard</h1>
+        <p className="text-gold-200 mt-2">Data Protection & Privacy Management</p>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-6 text-white">
-          <Shield className="w-8 h-8 mb-2" />
-          <p className="text-blue-100 text-sm">Compliance Score</p>
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+          <Shield className="w-8 h-8 mb-2 text-gold-300" />
+          <p className="text-gold-200 text-sm">Compliance Score</p>
           <p className="text-3xl font-bold">100%</p>
         </div>
 
-        <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-6 text-white">
-          <Database className="w-8 h-8 mb-2" />
-          <p className="text-green-100 text-sm">Data Subjects</p>
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+          <Database className="w-8 h-8 mb-2 text-gold-300" />
+          <p className="text-gold-200 text-sm">Data Subjects</p>
           <p className="text-3xl font-bold">1,248</p>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-6 text-white">
-          <Eye className="w-8 h-8 mb-2" />
-          <p className="text-purple-100 text-sm">Access Requests</p>
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+          <Eye className="w-8 h-8 mb-2 text-gold-300" />
+          <p className="text-gold-200 text-sm">Access Requests</p>
           <p className="text-3xl font-bold">23</p>
         </div>
 
-        <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg p-6 text-white">
-          <Calendar className="w-8 h-8 mb-2" />
-          <p className="text-orange-100 text-sm">Last Backup</p>
+        <div className="bg-gradient-to-br from-[#232323] to-[#181818] rounded-lg p-6 text-gold-400 border border-gold-700">
+          <Calendar className="w-8 h-8 mb-2 text-gold-300" />
+          <p className="text-gold-200 text-sm">Last Backup</p>
           <p className="text-xl font-bold">2 hours ago</p>
         </div>
       </div>
@@ -118,7 +118,7 @@ export function GDPRCompliance() {
           <CheckCircle className="w-5 h-5 text-green-600" />
           GDPR Compliance Checklist
         </h2>
-        
+
         <div className="space-y-3">
           {complianceChecklist.map((item) => (
             <div
@@ -143,7 +143,7 @@ export function GDPRCompliance() {
           <Calendar className="w-5 h-5 text-blue-600" />
           Backup Schedule (SRS 3.4)
         </h2>
-        
+
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <div>
@@ -183,7 +183,7 @@ export function GDPRCompliance() {
           <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">User Data Access Logs</h2>
-              
+
               <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
                 <table className="w-full">
                   <thead className="bg-gray-50">
@@ -231,7 +231,7 @@ export function GDPRCompliance() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Anonymize Inactive User Data</h2>
-            
+
             <div className="mb-6">
               <p className="text-gray-600 mb-4">
                 This will anonymize data for users who have been inactive for more than 2 years, as per GDPR requirements.
@@ -254,7 +254,7 @@ export function GDPRCompliance() {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={() => setShowAnonymizeModal(false)}
@@ -278,7 +278,7 @@ export function GDPRCompliance() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Request Data Export</h2>
-            
+
             {!exportComplete ? (
               <>
                 <div className="mb-6">
@@ -305,7 +305,7 @@ export function GDPRCompliance() {
                     </label>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-3">
                   <button
                     onClick={() => setShowExportModal(false)}
