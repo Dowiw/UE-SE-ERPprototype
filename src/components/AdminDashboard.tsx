@@ -38,7 +38,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
     { id: '4', name: 'Lisa Accountant', email: 'accountant@amgroup.com', role: 'Accountant', status: 'Inactive', lastLogin: '2026-01-05 14:20' },
   ]);
 
-  const [auditLogs] = useState<AuditLog[]>([
+  const [auditLogs, setAuditLogs] = useState<AuditLog[]>([
     { id: '1', timestamp: '2026-01-11 10:30:22', user: 'admin', action: 'USER_LOGIN', details: 'Successful login', ipAddress: '192.168.1.100' },
     { id: '2', timestamp: '2026-01-11 09:25:15', user: 'manager', action: 'USER_LOGIN', details: 'Successful login', ipAddress: '192.168.1.101' },
     { id: '3', timestamp: '2026-01-11 08:20:08', user: 'agent', action: 'USER_LOGIN', details: 'Successful login', ipAddress: '192.168.1.102' },
@@ -47,6 +47,21 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
     { id: '6', timestamp: '2026-01-10 23:05:12', user: 'unknown', action: 'LOGIN_FAILED', details: 'Failed login attempt - invalid credentials', ipAddress: '203.45.67.89' },
   ]);
 
+  // Helper to add an audit log entry
+  const recordAudit = (action: string, details: string) => {
+    setAuditLogs((prev) => [
+      {
+        id: Date.now().toString(),
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+        user: user.username,
+        action,
+        details,
+        ipAddress: '127.0.0.1', // Placeholder, replace with real IP if available
+      },
+      ...prev,
+    ]);
+  };
+
   const [newUser, setNewUser] = useState({
     name: '',
     email: '',
@@ -54,7 +69,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
   });
 
   const handleAddUser = () => {
-    const user: AdminUser = {
+    const userObj: AdminUser = {
       id: Date.now().toString(),
       name: newUser.name,
       email: newUser.email,
@@ -62,18 +77,31 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
       status: 'Active',
       lastLogin: 'Never'
     };
-    setUsers([...users, user]);
+    setUsers([...users, userObj]);
+    recordAudit('USER_ADDED', `Added user ${userObj.name} (${userObj.email}) as ${userObj.role}`);
     setShowAddUserModal(false);
     setNewUser({ name: '', email: '', role: 'Agent' });
   };
 
-  const handleEditUser = (user: AdminUser) => {
-    setSelectedUser(user);
+  const handleEditUser = (userToEdit: AdminUser) => {
+    setSelectedUser(userToEdit);
     setShowEditUserModal(true);
   };
 
+  const handleSaveEditUser = () => {
+    if (selectedUser) {
+      setUsers(users.map(u => u.id === selectedUser.id ? selectedUser : u));
+      recordAudit('USER_UPDATED', `Updated user ${selectedUser.name} (${selectedUser.email})`);
+      setShowEditUserModal(false);
+    }
+  };
+
   const handleDeleteUser = (userId: string) => {
+    const deleted = users.find(u => u.id === userId);
     setUsers(users.filter(u => u.id !== userId));
+    if (deleted) {
+      recordAudit('USER_DELETED', `Deleted user ${deleted.name} (${deleted.email})`);
+    }
     setShowEditUserModal(false);
   };
 
@@ -539,10 +567,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
                 Cancel
               </button>
               <button
-                onClick={() => {
-                  setUsers(users.map(u => u.id === selectedUser.id ? selectedUser : u));
-                  setShowEditUserModal(false);
-                }}
+                onClick={handleSaveEditUser}
                 className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
               >
                 Save Changes
