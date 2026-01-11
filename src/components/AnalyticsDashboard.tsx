@@ -81,7 +81,15 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
             </select>
           </div>
 
-          {/* Removed AI/ML/Run Analysis button for human-made feel */}
+          <div className="flex items-end">
+            <button
+              onClick={handleRunAnalysis}
+              className="w-full bg-gold-400 text-[#181818] px-4 py-2 rounded-lg hover:bg-gold-300 transition-colors flex items-center justify-center gap-2"
+            >
+              <TrendingUp className="w-4 h-4" />
+              Run Analysis
+            </button>
+          </div>
 
           <div className="flex items-end">
             <button
@@ -94,11 +102,33 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           </div>
         </div>
 
-        {/* Removed AI/ML-based forecasting reference */}
+        <div className="mt-4 flex items-center gap-3">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={flagInconsistentData}
+              onChange={(e) => setFlagInconsistentData(e.target.checked)}
+              className="w-4 h-4 text-gold-400 rounded focus:ring-2 focus:ring-gold-400 bg-[#181818] border border-gold-700"
+            />
+            <span className="text-sm text-gold-200">Flag Inconsistent Data</span>
+          </label>
+
+          <div className="ml-auto flex items-center gap-2 text-sm text-gold-300">
+            <AlertCircle className="w-4 h-4" />
+            <span>Predictive forecasting enabled</span>
+          </div>
+        </div>
       </div>
 
       {/* Loading State */}
-      {/* Removed loading/analysis state for human-made feel */}
+      {isLoading && (
+        <div className="bg-white rounded-lg shadow p-12 mb-8">
+          <div className="flex flex-col items-center justify-center">
+            <Loader className="w-12 h-12 text-blue-600 animate-spin mb-4" />
+            <p className="text-gray-600">Running analysis on {selectedDataset}...</p>
+          </div>
+        </div>
+      )}
 
       {/* Charts */}
       {showCharts && !isLoading && (
@@ -288,7 +318,24 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           )}
 
           {/* Inconsistent Data Warning */}
-          {/* Removed AI/ML and warning visuals for human-made feel */}
+          {flagInconsistentData && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold text-yellow-900 mb-2">Data Inconsistencies Detected</h3>
+                  <ul className="list-disc list-inside space-y-1 text-sm text-yellow-800">
+                    <li>3 properties missing valuation data</li>
+                    <li>2 transactions with mismatched dates</li>
+                    <li>1 agent record with incomplete information</li>
+                  </ul>
+                  <button className="mt-3 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 text-sm">
+                    Review Issues
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
