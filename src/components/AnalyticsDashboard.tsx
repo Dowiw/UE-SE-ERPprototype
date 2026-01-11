@@ -63,7 +63,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
       </div>
 
       {/* Controls */}
-      <div className="bg-white rounded-lg shadow p-6 mb-8 border border-gray-200">
+      <div className="bg-white rounded-md shadow p-6 mb-8 border border-gray-200">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -73,7 +73,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
             <select
               value={selectedDataset}
               onChange={(e) => setSelectedDataset(e.target.value as any)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-400 bg-white text-gray-700"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-400 bg-white text-gray-700"
             >
               <option value="properties">Properties</option>
               <option value="finances">Finances</option>
@@ -84,7 +84,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           <div className="flex items-end">
             <button
               onClick={handleRunAnalysis}
-              className="w-full bg-gold-400 text-[#181818] px-4 py-2 rounded-lg hover:bg-gold-300 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-gold-400 text-[#181818] px-4 py-2 rounded-md hover:bg-gold-300 transition-colors flex items-center justify-center gap-2"
             >
               <TrendingUp className="w-4 h-4" />
               Run Analysis
@@ -94,7 +94,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           <div className="flex items-end">
             <button
               onClick={() => setShowExportModal(true)}
-              className="w-full bg-gray-100 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+              className="w-full bg-gray-100 text-gray-700 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
             >
               <Download className="w-4 h-4 text-gray-400" />
               Export Report
@@ -108,7 +108,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
               type="checkbox"
               checked={flagInconsistentData}
               onChange={(e) => setFlagInconsistentData(e.target.checked)}
-              className="w-4 h-4 text-gold-400 rounded focus:ring-2 focus:ring-gold-400 bg-[#181818] border border-gold-700"
+              className="w-4 h-4 text-gold-400 rounded-md focus:ring-2 focus:ring-gold-400 bg-[#181818] border border-gold-700"
             />
             <span className="text-sm text-gold-200">Flag Inconsistent Data</span>
           </label>
@@ -122,7 +122,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
 
       {/* Loading State */}
       {isLoading && (
-        <div className="bg-white rounded-lg shadow p-12 mb-8">
+        <div className="bg-white rounded-md shadow p-12 mb-8">
           <div className="flex flex-col items-center justify-center">
             <Loader className="w-12 h-12 text-blue-600 animate-spin mb-4" />
             <p className="text-gray-600">Running analysis on {selectedDataset}...</p>
@@ -136,7 +136,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           {/* Properties Dataset */}
           {selectedDataset === 'properties' && (
             <>
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-white rounded-md shadow p-6">
                 <h2 className="text-xl font-semibold mb-4">Property Trends Over Time</h2>
                 <ResponsiveContainer width="100%" height={300}>
                   <LineChart data={propertyData} onClick={handleChartClick}>
@@ -155,7 +155,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-md shadow p-6">
                   <h2 className="text-xl font-semibold mb-4">Property Performance</h2>
                   <ResponsiveContainer width="100%" height={250}>
                     <BarChart data={propertyData} onClick={handleChartClick}>
@@ -169,20 +169,20 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-md shadow p-6">
                   <h2 className="text-xl font-semibold mb-4">Key Metrics</h2>
                   <div className="space-y-4">
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Total Properties</p>
                       <p className="text-3xl font-bold text-gray-800">331</p>
                       <p className="text-sm text-gray-500 mt-1">12% increase from last period</p>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Average Value</p>
                       <p className="text-3xl font-bold text-gray-800">$485K</p>
                       <p className="text-sm text-gray-500 mt-1">8% increase from last period</p>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Occupancy Rate</p>
                       <p className="text-3xl font-bold text-gray-800">94.2%</p>
                       <p className="text-sm text-gray-500 mt-1">2.5% increase from last period</p>
@@ -197,7 +197,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           {selectedDataset === 'finances' && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-md shadow p-6">
                   <h2 className="text-xl font-semibold mb-4">Revenue Distribution</h2>
                   <ResponsiveContainer width="100%" height={300}>
                     <PieChart onClick={handleChartClick}>
@@ -220,7 +220,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-md shadow p-6">
                   <h2 className="text-xl font-semibold mb-4">Revenue by Source</h2>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={financialData} onClick={handleChartClick}>
@@ -234,22 +234,22 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-white rounded-md shadow p-6">
                 <h2 className="text-xl font-semibold mb-4">Financial Summary</h2>
                 <div className="grid grid-cols-4 gap-4">
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="p-4 border border-gray-200 rounded-md">
                     <p className="text-sm text-gray-600">Total Revenue</p>
                     <p className="text-2xl font-bold text-gray-900">$905K</p>
                   </div>
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="p-4 border border-gray-200 rounded-md">
                     <p className="text-sm text-gray-600">Net Profit</p>
                     <p className="text-2xl font-bold text-gray-800">$685K</p>
                   </div>
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="p-4 border border-gray-200 rounded-md">
                     <p className="text-sm text-gray-600">Profit Margin</p>
                     <p className="text-2xl font-bold text-gray-800">75.7%</p>
                   </div>
-                  <div className="p-4 border border-gray-200 rounded-lg">
+                  <div className="p-4 border border-gray-200 rounded-md">
                     <p className="text-sm text-gray-600">Growth Rate</p>
                     <p className="text-2xl font-bold text-gray-800">+18.3%</p>
                   </div>
@@ -261,7 +261,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
           {/* Agents Dataset */}
           {selectedDataset === 'agents' && (
             <>
-              <div className="bg-white rounded-lg shadow p-6">
+              <div className="bg-white rounded-md shadow p-6">
                 <h2 className="text-xl font-semibold mb-4">Agent Performance Comparison</h2>
                 <ResponsiveContainer width="100%" height={300}>
                   <BarChart data={agentData} onClick={handleChartClick}>
@@ -277,7 +277,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 </ResponsiveContainer>
               </div>
 
-              <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="bg-white rounded-md shadow overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <h2 className="text-xl font-semibold">Agent Leaderboard</h2>
                 </div>
@@ -297,7 +297,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                       .map((agent, index) => (
                         <tr key={agent.name} className="hover:bg-gray-50">
                           <td className="px-6 py-4">
-                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-gray-700">
+                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-gray-200 text-gray-700">
                               {index + 1}
                             </span>
                           </td>
@@ -319,7 +319,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
 
           {/* Inconsistent Data Warning */}
           {flagInconsistentData && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <div className="bg-yellow-50 border border-yellow-200 rounded-md p-6">
               <div className="flex items-start gap-3">
                 <AlertCircle className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
                 <div>
@@ -329,7 +329,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                     <li>2 transactions with mismatched dates</li>
                     <li>1 agent record with incomplete information</li>
                   </ul>
-                  <button className="mt-3 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 text-sm">
+                  <button className="mt-3 px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 text-sm">
                     Review Issues
                   </button>
                 </div>
@@ -342,21 +342,21 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
       {/* Drill Down Modal */}
       {drillDownData && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-2xl p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Detailed Breakdown</h2>
 
             <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-4 bg-blue-50 rounded-md">
                 <p className="text-sm text-gray-600">Selected Data Point</p>
                 <p className="text-lg font-semibold">{JSON.stringify(drillDownData)}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 border border-gray-200 rounded-lg">
+                <div className="p-4 border border-gray-200 rounded-md">
                   <p className="text-sm text-gray-600">Sample Metric 1</p>
                   <p className="text-2xl font-bold">1,234</p>
                 </div>
-                <div className="p-4 border border-gray-200 rounded-lg">
+                <div className="p-4 border border-gray-200 rounded-md">
                   <p className="text-sm text-gray-600">Sample Metric 2</p>
                   <p className="text-2xl font-bold">$56,789</p>
                 </div>
@@ -370,7 +370,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
 
             <button
               onClick={() => setDrillDownData(null)}
-              className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             >
               Close
             </button>
@@ -381,11 +381,11 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
       {/* Export Modal */}
       {showExportModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Export Report</h2>
 
             <div className="space-y-3">
-              <button className="w-full p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all text-left">
+              <button className="w-full p-4 border-2 border-gray-200 rounded-md hover:border-blue-500 hover:bg-blue-50 transition-all text-left">
                 <div className="flex items-center gap-3">
                   <Download className="w-5 h-5 text-red-600" />
                   <div>
@@ -395,7 +395,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 </div>
               </button>
 
-              <button className="w-full p-4 border-2 border-gray-200 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all text-left">
+              <button className="w-full p-4 border-2 border-gray-200 rounded-md hover:border-green-500 hover:bg-green-50 transition-all text-left">
                 <div className="flex items-center gap-3">
                   <Download className="w-5 h-5 text-green-600" />
                   <div>
@@ -405,7 +405,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
                 </div>
               </button>
 
-              <button className="w-full p-4 border-2 border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all text-left">
+              <button className="w-full p-4 border-2 border-gray-200 rounded-md hover:border-purple-500 hover:bg-purple-50 transition-all text-left">
                 <div className="flex items-center gap-3">
                   <Download className="w-5 h-5 text-purple-600" />
                   <div>
@@ -418,7 +418,7 @@ export function AnalyticsDashboard({ user }: AnalyticsDashboardProps) {
 
             <button
               onClick={() => setShowExportModal(false)}
-              className="mt-6 w-full px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+              className="mt-6 w-full px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
             >
               Cancel
             </button>

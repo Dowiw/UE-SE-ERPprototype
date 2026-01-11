@@ -99,7 +99,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
     <div>
       {/* READ-ONLY Notice for Agents */}
       {isReadOnly && (
-        <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
+        <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-md">
           <div className="flex items-start gap-3">
             <Eye className="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" />
             <div>
@@ -130,7 +130,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
               aria-label="Filter properties by status"
             >
               <option value="all">All Properties</option>
@@ -144,7 +144,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
           {canEdit && (
             <button
               onClick={() => setShowAddModal(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center gap-2"
             >
               <Plus className="w-4 h-4" />
               Add Property
@@ -155,7 +155,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
           {isReadOnly && (
             <button
               onClick={handleRequestNew}
-              className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Request New Listing
@@ -169,7 +169,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
         {filteredProperties.map((property) => (
           <div
             key={property.id}
-            className={`bg-white rounded-lg shadow-lg overflow-hidden transition-all ${
+            className={`bg-white rounded-md shadow-lg overflow-hidden transition-all ${
               isReadOnly
                 ? 'opacity-90 cursor-pointer hover:shadow-md'
                 : 'hover:shadow-xl cursor-pointer'
@@ -180,7 +180,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
             {/* View Only Badge */}
             {isReadOnly && (
               <div className="absolute top-2 right-2 z-10">
-                <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-medium rounded shadow-md">
+                <span className="px-2 py-1 bg-yellow-500 text-xs font-medium rounded-md shadow-md">
                   VIEW ONLY
                 </span>
               </div>
@@ -205,10 +205,10 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
               <h3 className="font-semibold text-lg mb-2">{property.address}</h3>
 
               <div className="flex items-center gap-2 mb-3">
-                <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">
+                <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-sm">
                   {property.type}
                 </span>
-                <span className={`px-2 py-1 rounded text-sm ${
+                <span className={`px-2 py-1 rounded-md text-sm ${
                   property.status === 'Active' ? 'bg-green-100 text-green-800' :
                   property.status === 'Sold' ? 'bg-gray-100 text-gray-800' :
                   'bg-yellow-100 text-yellow-800'
@@ -236,7 +236,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     e.stopPropagation();
                     handleViewDetails(property);
                   }}
-                  className="flex-1 px-3 py-2 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors flex items-center justify-center gap-1"
+                  className="flex-1 px-3 py-2 bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 transition-colors flex items-center justify-center gap-1"
                 >
                   <Eye className="w-4 h-4" />
                   View Details
@@ -251,7 +251,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                         setSelectedProperty(property);
                         setShowAddModal(true);
                       }}
-                      className="px-3 py-2 bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors"
+                      className="px-3 py-2 bg-green-50 text-green-600 rounded-md hover:bg-green-100 transition-colors"
                       title="Edit property"
                     >
                       <Edit2 className="w-4 h-4" />
@@ -261,7 +261,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                         e.stopPropagation();
                         handleDeleteProperty(property.id);
                       }}
-                      className="px-3 py-2 bg-red-50 text-red-600 rounded hover:bg-red-100 transition-colors"
+                      className="px-3 py-2 bg-red-50 text-red-600 rounded-md hover:bg-red-100 transition-colors"
                       title="Delete property"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -276,7 +276,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                       e.stopPropagation();
                       handleRequestEdit(property);
                     }}
-                    className="px-3 py-2 bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors flex items-center gap-1"
+                    className="px-3 py-2 bg-green-50 text-green-600 rounded-md hover:bg-green-100 transition-colors flex items-center gap-1"
                     title="Request edit from Manager"
                   >
                     <Mail className="w-4 h-4" />
@@ -298,7 +298,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
       {/* Add/Edit Property Modal - Only for Manager */}
       {showAddModal && canEdit && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-2xl p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
               {selectedProperty ? 'Edit Property' : 'Add New Property'}
             </h2>
@@ -310,7 +310,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   type="text"
                   value={newProperty.address}
                   onChange={(e) => setNewProperty({ ...newProperty, address: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter property address"
                 />
               </div>
@@ -321,7 +321,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   <select
                     value={newProperty.type}
                     onChange={(e) => setNewProperty({ ...newProperty, type: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="Apartment">Apartment</option>
                     <option value="House">House</option>
@@ -335,7 +335,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   <select
                     value={newProperty.status}
                     onChange={(e) => setNewProperty({ ...newProperty, status: e.target.value as 'Active' | 'Inactive' | 'Sold' })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="Active">Active</option>
                     <option value="Inactive">Inactive</option>
@@ -351,7 +351,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     type="number"
                     value={newProperty.value}
                     onChange={(e) => setNewProperty({ ...newProperty, value: Number(e.target.value) })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                     placeholder="0"
                   />
                 </div>
@@ -362,7 +362,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     type="number"
                     value={newProperty.photos}
                     onChange={(e) => setNewProperty({ ...newProperty, photos: Number(e.target.value) })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                     placeholder="0"
                   />
                 </div>
@@ -376,13 +376,13 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   setSelectedProperty(null);
                   setNewProperty({ address: '', type: 'Apartment', imageUrl: '', status: 'Active', value: 0, photos: 0 });
                 }}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleAddProperty}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
               >
                 {selectedProperty ? 'Update Property' : 'Add Property'}
               </button>
@@ -394,12 +394,12 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
       {/* Property Detail Modal - READ-ONLY for Agents */}
       {showDetailModal && selectedProperty && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-start justify-between mb-4">
                 <h2 className="text-2xl font-bold text-gray-900">{selectedProperty.address}</h2>
                 {isReadOnly && (
-                  <span className="px-3 py-1 bg-yellow-500 text-white text-sm font-medium rounded">
+                  <span className="px-3 py-1 bg-yellow-500 text-sm font-medium rounded-md">
                     VIEW ONLY
                   </span>
                 )}
@@ -442,26 +442,26 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
               {detailTab === 'info' && (
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Type</p>
                       <p className="font-medium text-lg">{selectedProperty.type}</p>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Status</p>
                       <p className="font-medium text-lg">{selectedProperty.status}</p>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Value</p>
                       <p className="font-medium text-lg">${selectedProperty.value.toLocaleString()}</p>
                     </div>
-                    <div className="p-4 bg-gray-50 rounded-lg">
+                    <div className="p-4 bg-gray-50 rounded-md">
                       <p className="text-sm text-gray-600">Photos</p>
                       <p className="font-medium text-lg">{selectedProperty.photos} available</p>
                     </div>
                   </div>
 
                   {isReadOnly && (
-                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
                       <p className="text-sm text-blue-800">
                         <strong>Note:</strong> This is a read-only view. To request changes, click "Request Edit" button.
                       </p>
@@ -475,13 +475,13 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                 <div>
                   <div className="grid grid-cols-3 gap-4 mb-4">
                     {Array.from({ length: selectedProperty.photos }).map((_, i) => (
-                      <div key={i} className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
+                      <div key={i} className="aspect-video bg-gradient-to-br from-blue-400 to-purple-500 rounded-md flex items-center justify-center">
                         <Image className="w-12 h-12 text-white opacity-50" />
                       </div>
                     ))}
                   </div>
                   {isReadOnly && (
-                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-md">
                       <p className="text-sm text-yellow-800">
                         Photos are view-only. Contact your Manager to upload or modify images.
                       </p>
@@ -496,15 +496,15 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   {canViewFinancial || !isReadOnly ? (
                     <>
                       <div className="grid grid-cols-3 gap-4">
-                        <div className="p-4 bg-blue-50 rounded-lg">
+                        <div className="p-4 bg-blue-50 rounded-md">
                           <p className="text-sm text-gray-600">Purchase Price</p>
                           <p className="text-xl font-bold">${selectedProperty.value.toLocaleString()}</p>
                         </div>
-                        <div className="p-4 bg-green-50 rounded-lg">
+                        <div className="p-4 bg-green-50 rounded-md">
                           <p className="text-sm text-gray-600">Monthly Revenue</p>
                           <p className="text-xl font-bold">$2,500</p>
                         </div>
-                        <div className="p-4 bg-purple-50 rounded-lg">
+                        <div className="p-4 bg-purple-50 rounded-md">
                           <p className="text-sm text-gray-600">Annual ROI</p>
                           <p className="text-xl font-bold">6.7%</p>
                         </div>
@@ -513,11 +513,11 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                       <div className="border-t pt-4">
                         <h3 className="font-semibold mb-3">Recent Transactions</h3>
                         <div className="space-y-2">
-                          <div className="flex justify-between p-3 bg-gray-50 rounded">
+                          <div className="flex justify-between p-3 bg-gray-50 rounded-md">
                             <span>Rent Payment - January 2026</span>
                             <span className="font-medium text-green-600">+$2,500</span>
                           </div>
-                          <div className="flex justify-between p-3 bg-gray-50 rounded">
+                          <div className="flex justify-between p-3 bg-gray-50 rounded-md">
                             <span>Maintenance - December 2025</span>
                             <span className="font-medium text-red-600">-$450</span>
                           </div>
@@ -539,7 +539,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                     setShowDetailModal(false);
                     setSelectedProperty(null);
                   }}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
                 >
                   Close
                 </button>
@@ -550,7 +550,7 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                       setShowDetailModal(false);
                       handleRequestEdit(selectedProperty);
                     }}
-                    className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2"
                   >
                     <Mail className="w-4 h-4" />
                     Request Edit
@@ -565,14 +565,14 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
       {/* Request Edit/New Modal - For Agents */}
       {showRequestModal && isReadOnly && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
               {requestType === 'edit' ? 'Request Property Edit' : 'Request New Listing'}
             </h2>
 
             <div className="mb-6">
               {requestType === 'edit' && selectedProperty && (
-                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg mb-4">
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-md mb-4">
                   <p className="text-sm text-blue-800">
                     <strong>Property:</strong> {selectedProperty.address}
                   </p>
@@ -590,13 +590,13 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                 <textarea
                   value={requestMessage}
                   onChange={(e) => setRequestMessage(e.target.value)}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
                   rows={4}
                   placeholder="Describe the changes you'd like to request..."
                 />
               </div>
 
-              <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+              <div className="mt-4 p-3 bg-gray-50 rounded-md">
                 <p className="text-sm text-gray-600">
                   <strong>To:</strong> manager@amgroup.com<br />
                   <strong>From:</strong> {user.email}
@@ -610,13 +610,13 @@ export function PropertyManagement({ user }: PropertyManagementProps) {
                   setShowRequestModal(false);
                   setRequestMessage('');
                 }}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSendRequest}
-                className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center justify-center gap-2"
               >
                 <Mail className="w-4 h-4" />
                 Send Request

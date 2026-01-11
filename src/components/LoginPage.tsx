@@ -91,7 +91,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
             backgroundBlendMode: 'darken',
           }}
         >
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
+      <div className="bg-white rounded-md shadow-2xl w-full max-w-md p-8">
         <div className="text-center mb-8">
           <img
             src={amGroupLogo}
@@ -115,7 +115,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 setUsername(e.target.value);
                 setErrors({ ...errors, username: undefined });
               }}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-all ${
+              className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:border-transparent transition-all ${
                 errors.username ? 'border-red-500' : 'border-gray-300'
               }`}
               style={!errors.username ? { outlineColor: '#D4AF37' } : {}}
@@ -143,7 +143,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 setPassword(e.target.value);
                 setErrors({ ...errors, password: undefined });
               }}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-all ${
+              className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:border-transparent transition-all ${
                 errors.password ? 'border-red-500' : 'border-gray-300'
               }`}
               style={!errors.password ? { outlineColor: '#D4AF37' } : {}}
@@ -162,7 +162,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           <button
             type="button"
             onClick={() => setShowForgotPassword(true)}
-            className="text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded"
+            className="text-sm hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-md"
             style={{ color: '#D4AF37' }}
             aria-label="Forgot password"
           >
@@ -171,7 +171,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
           <button
             type="submit"
-            className="w-full text-black py-3 rounded-lg transition-all font-medium focus:outline-none focus:ring-4"
+            className="w-full text-black py-3 rounded-md transition-all font-medium focus:outline-none focus:ring-4"
             style={{ backgroundColor: '#D4AF37', outlineColor: '#D4AF37' }}
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#B8941C'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D4AF37'}
@@ -188,7 +188,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           </div>
         </div>
 
-        <div className="mt-4 p-4 rounded-lg" style={{ backgroundColor: '#F4E8C6' }}>
+        <div className="mt-4 p-4 rounded-md" style={{ backgroundColor: '#F4E8C6' }}>
           <p className="text-sm text-gray-700 font-medium mb-2">Demo Credentials:</p>
           <p className="text-xs text-gray-600">Username: admin, manager, agent, or accountant</p>
           <p className="text-xs text-gray-600">Password: password123</p>
@@ -198,7 +198,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
       {/* Forgot Password Modal */}
       {showForgotPassword && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Mail className="w-5 h-5" />
               Reset Password
@@ -206,7 +206,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
             {emailSent ? (
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#F4E8C6' }}>
+                <div className="w-16 h-16 rounded-md flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#F4E8C6' }}>
                   <Mail className="w-8 h-8" style={{ color: '#D4AF37' }} />
                 </div>
                 <p className="font-medium" style={{ color: '#D4AF37' }}>Email sent successfully!</p>
@@ -223,7 +223,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:border-transparent"
                     style={{ outlineColor: '#D4AF37' }}
                     placeholder="Enter your email"
                     required
@@ -238,13 +238,13 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                       setShowForgotPassword(false);
                       setEmail('');
                     }}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 px-4 py-2 text-black rounded-lg transition-colors"
+                    className="flex-1 px-4 py-2 text-black rounded-md transition-colors"
                     style={{ backgroundColor: '#D4AF37' }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#B8941C'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D4AF37'}
@@ -261,9 +261,9 @@ export function LoginPage({ onLogin }: LoginPageProps) {
       {/* Too Many Attempts Warning */}
       {showTooManyAttempts && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+          <div className="bg-white rounded-md shadow-xl w-full max-w-md p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F4E8C6' }}>
+              <div className="w-12 h-12 rounded-md flex items-center justify-center" style={{ backgroundColor: '#F4E8C6' }}>
                 <AlertCircle className="w-6 h-6" style={{ color: '#D4AF37' }} />
               </div>
               <h2 className="text-xl font-bold text-gray-900">Too Many Failed Attempts</h2>
@@ -279,7 +279,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
                 setShowTooManyAttempts(false);
                 setFailedAttempts(0);
               }}
-              className="w-full px-4 py-2 text-black rounded-lg transition-colors"
+              className="w-full px-4 py-2 text-black rounded-md transition-colors"
               style={{ backgroundColor: '#D4AF37' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#B8941C'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#D4AF37'}

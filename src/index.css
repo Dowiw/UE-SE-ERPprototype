@@ -862,7 +862,7 @@
   }
 
   .rounded {
-    border-radius: .25rem;
+    border-radius: 0.125rem;
   }
 
   .rounded-2xl {
